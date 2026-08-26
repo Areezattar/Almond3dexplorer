@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Interactive 3D chemistry explorer for almond compounds">
+<title>Almond Chemistry – 3D Molecular Explorer</title>
+<script src="https://3Dmol.csb.pitt.edu/build/3Dmol-min.js" defer></script>
+<style>
+*{box-sizing:border-box}
+body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#f8f2e8;color:#222;line-height:1.5}
+header{background:#eadcc9;padding:28px 20px;text-align:center;border-bottom:1px solid #d5c2a8}
+header h1{margin:0 0 8px;color:#633b1f;font-size:clamp(28px,5vw,42px)}
+.wrap{max-width:1050px;margin:auto;padding:18px}
+.card{background:#fff;border-radius:16px;padding:20px;margin:18px 0;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+h2{color:#6b4629;margin-top:0}
+.viewer{height:430px;min-height:300px;border:1px solid #bbb;border-radius:12px;background:#fff;position:relative;overflow:hidden}
+.viewer-message{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;color:#555;background:#fff}
+button{padding:10px 14px;margin:5px 3px;border:1px solid #777;border-radius:8px;background:#fff;cursor:pointer;font-size:15px}
+button:hover{background:#f3eadf}
+button:disabled{opacity:.5;cursor:not-allowed}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px}
+.badge{display:inline-block;padding:5px 9px;background:#f2e6d4;border-radius:20px;margin:3px}
+.small{font-size:.9em;color:#555}
+.status{margin:8px 0;padding:9px 12px;border-radius:8px;background:#f4f4f4}
+a{color:#155b91}
+.warning{background:#fff5d8;border-left:4px solid #c08a00;padding:12px;border-radius:6px}
+ul{padding-left:22px}
+@media(max-width:600px){.wrap{padding:10px}.card{padding:15px}.viewer{height:360px}}
+</style>
+</head>
+<body>
+<header>
+<h1>Almond — <i>Prunus dulcis</i></h1>
+<p>Interactive 3D molecular explorer &amp; chemistry information</p>
+</header>
+
+<div class="wrap">
+
+<div class="card">
+<h2>1. Interactive 3D molecular structures</h2>
+<p>Select a compound. The viewer obtains a 3D conformer from PubChem.</p>
+
+<div id="viewer" class="viewer">
+  <div id="viewerMessage" class="viewer-message">Preparing the 3D viewer…</div>
+</div>
+
+<div>
+<button data-cid="14985" data-name="Vitamin E (α-Tocopherol)">Vitamin E</button>
+<button data-cid="656516" data-name="Amygdalin">Amygdalin</button>
+<button data-cid="445639" data-name="Oleic acid">Oleic acid</button>
+<button data-cid="5280450" data-name="Linoleic acid">Linoleic acid</button>
+</div>
+<div>
+<button id="ballBtn">Ball &amp; stick</button>
+<button id="stickBtn">Stick</button>
+<button id="retryBtn">Retry 3D model</button>
+</div>
+<p id="selected" class="small">Selected: Vitamin E (α-Tocopherol)</p>
+<p class="small">Tip: drag to rotate, scroll/pinch to zoom.</p>
+</div>
+
+<div class="card">
+<h2>2. Classification</h2>
+<div class="grid">
+<div>
+<h3>Plant identity</h3>
+<ul>
+<li>Common name: Almond</li>
+<li>Scientific name: <i>Prunus dulcis</i></li>
+<li>Family: Rosaceae</li>
+<li>The edible almond is the seed/kernel of the fruit.</li>
+</ul>
+</div>
+<div>
+<h3>Major chemical constituents</h3>
+<p>
+<span class="badge">α-Tocopherol</span>
+<span class="badge">Oleic acid</span>
+<span class="badge">Linoleic acid</span>
+<span class="badge">Phytosterols</span>
+<span class="badge">Polyphenols</span>
+<span class="badge">Amygdalin</span>
+</p>
+<p>Almond composition varies with cultivar, growing conditions and processing.</p>
+</div>
+</div>
+</div>
+
+<div class="card">
+<h2>3. Vitamin E (α-Tocopherol)</h2>
+<p><b>Molecular formula:</b> C<sub>29</sub>H<sub>50</sub>O<sub>2</sub> &nbsp; | &nbsp; <b>Molar mass:</b> 430.7 g/mol.</p>
+<p>α-Tocopherol is the principal biologically active form of vitamin E. Vitamin E is a fat-soluble antioxidant that helps protect cells from oxidative damage.</p>
+</div>
+
+<div class="card">
+<h2>4. Amygdalin — important clarification</h2>
+<p><b>Molecular formula:</b> C<sub>20</sub>H<sub>27</sub>NO<sub>11</sub> &nbsp; | &nbsp; <b>Molar mass:</b> 457.4 g/mol.</p>
+<p>Amygdalin is a cyanogenic glycoside found in some <i>Prunus</i> seeds. It is included here as a chemical constituent for study.</p>
+<div class="warning"><b>Safety note:</b> amygdalin can release cyanide when metabolized. This page is for educational chemistry only; amygdalin should not be presented as a medicine or health supplement.</div>
+</div>
+
+<div class="card">
+<h2>5. Functional groups</h2>
+<ul>
+<li><b>Vitamin E:</b> phenolic –OH and an ether-containing chromanol ring; it also contains an aromatic ring and an alkyl side chain.</li>
+<li><b>Oleic acid:</b> carboxylic acid (–COOH) and alkene (C=C).</li>
+<li><b>Linoleic acid:</b> carboxylic acid (–COOH) and two C=C bonds.</li>
+<li><b>Amygdalin:</b> multiple hydroxyl groups, ether/acetal linkages and a nitrile (–C≡N) group.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>6. Nutritional &amp; biological significance</h2>
+<ul>
+<li>Almonds provide protein, dietary fibre, unsaturated fats, vitamin E and minerals such as magnesium.</li>
+<li>Oleic and linoleic acids are important fatty acids in almond kernels; proportions vary by variety.</li>
+<li>Almond skins contain numerous polyphenols and flavonoids.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>7. Sources &amp; further reading</h2>
+<ul>
+<li><a href="https://pubchem.ncbi.nlm.nih.gov/compound/14985" target="_blank" rel="noopener">PubChem — α-Tocopherol</a></li>
+<li><a href="https://pubchem.ncbi.nlm.nih.gov/compound/656516" target="_blank" rel="noopener">PubChem — Amygdalin</a></li>
+<li><a href="https://pubchem.ncbi.nlm.nih.gov/compound/445639" target="_blank" rel="noopener">PubChem — Oleic acid</a></li>
+<li><a href="https://pubchem.ncbi.nlm.nih.gov/compound/5280450" target="_blank" rel="noopener">PubChem — Linoleic acid</a></li>
+<li><a href="https://phytochem.nal.usda.gov/plant-prunus-dulcis" target="_blank" rel="noopener">USDA — Phytochemical database for Prunus dulcis</a></li>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7146189/" target="_blank" rel="noopener">Scientific review — Almonds: nutrients and health-promoting compounds</a></li>
+</ul>
+</div>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  let viewer = null;
+  let currentCid = "14985";
+  let currentName = "Vitamin E (α-Tocopherol)";
+  let currentSdf = null;
+
+  const message = document.getElementById("viewerMessage");
+  const status = document.getElementById("selected");
+
+  function setMessage(text) {
+    if (message) {
+      message.textContent = text;
+      message.style.display = text ? "flex" : "none";
+    }
+  }
+
+  function setStatus(text) {
+    status.textContent = text;
+  }
+
+  function initViewer() {
+    if (typeof $3Dmol === "undefined") {
+      setMessage("The 3D viewer library could not be loaded. Check your internet connection and reload the page.");
+      setStatus("3D viewer unavailable.");
+      return false;
+    }
+    viewer = $3Dmol.createViewer(document.getElementById("viewer"), {
+      backgroundColor: "white"
+    });
+    setMessage("");
+    return true;
+  }
+
+  async function fetchWithTimeout(url, timeoutMs) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeoutMs);
+    try {
+      const response = await fetch(url, {
+        method: "GET",
+        mode: "cors",
+        cache: "no-store",
+        signal: controller.signal,
+        headers: { "Accept": "chemical/x-mdl-sdfile,text/plain;q=0.9,*/*;q=0.8" }
+      });
+      if (!response.ok) throw new Error("PubChem returned HTTP " + response.status);
+      return await response.text();
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+
+  async function loadMol(cid, name) {
+    currentCid = cid;
+    currentName = name;
+    setStatus("Loading: " + name + "…");
+    setMessage("Loading 3D structure…");
+
+    if (!viewer && !initViewer()) return;
+
+    viewer.removeAllModels();
+    viewer.render();
+
+    const url = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/" +
+                encodeURIComponent(cid) + "/SDF?record_type=3d";
+
+    try {
+      const sdf = await fetchWithTimeout(url, 15000);
+      if (!sdf || sdf.indexOf("M  END") === -1) {
+        throw new Error("No valid 3D SDF structure was returned.");
+      }
+
+      currentSdf = sdf;
+      viewer.addModel(sdf, "sdf");
+      viewer.setStyle({}, {
+        stick: { radius: 0.16 },
+        sphere: { scale: 0.30 }
+      });
+      viewer.zoomTo();
+      viewer.render();
+      setMessage("");
+      setStatus("Selected: " + name);
+    } catch (error) {
+      currentSdf = null;
+      viewer.removeAllModels();
+      viewer.render();
+      setMessage("Could not load the 3D structure. If you opened this HTML directly from a file, try opening it through a simple web server or check your internet connection.");
+      setStatus("3D model unavailable for " + name + ". " + (error.message || ""));
+    }
+  }
+
+  function styleBall() {
+    if (!viewer || !currentSdf) return;
+    viewer.setStyle({}, { stick: { radius: 0.14 }, sphere: { scale: 0.32 } });
+    viewer.render();
+  }
+
+  function styleStick() {
+    if (!viewer || !currentSdf) return;
+    viewer.setStyle({}, { stick: { radius: 0.22 } });
+    viewer.render();
+  }
+
+  document.querySelectorAll("button[data-cid]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      loadMol(button.dataset.cid, button.dataset.name);
+    });
+  });
+
+  document.getElementById("ballBtn").addEventListener("click", styleBall);
+  document.getElementById("stickBtn").addEventListener("click", styleStick);
+  document.getElementById("retryBtn").addEventListener("click", function () {
+    loadMol(currentCid, currentName);
+  });
+
+  window.addEventListener("resize", function () {
+    if (viewer) {
+      viewer.resize();
+      viewer.render();
+    }
+  });
+
+  function start() {
+    if (initViewer()) loadMol(currentCid, currentName);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", start);
+  } else {
+    start();
+  }
+})();
+</script>
+</body>
+</html>
